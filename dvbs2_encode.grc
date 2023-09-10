@@ -1,0 +1,292 @@
+options:
+  parameters:
+    author: ''
+    catch_exceptions: 'True'
+    category: Custom
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: no_gui
+    hier_block_src_path: '.:'
+    id: dvbs2_encode
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: run
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: ''
+    window_size: (1000,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 11]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: blocks_file_sink_1
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: ''
+    file: /home/daniel/contracting/grcon23-ctf/qpsk12_plframes.c64
+    type: complex
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [440, 364.0]
+    rotation: 0
+    state: true
+- name: blocks_file_source_1
+  id: blocks_file_source
+  parameters:
+    affinity: ''
+    alias: ''
+    begin_tag: pmt.PMT_NIL
+    comment: ''
+    file: /home/daniel/contracting/grcon23-ctf/bbframes.u8
+    length: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    repeat: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 12.0]
+    rotation: 0
+    state: enabled
+- name: blocks_unpack_k_bits_bb_0
+  id: blocks_unpack_k_bits_bb
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    k: '8'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [440, 44.0]
+    rotation: 0
+    state: enabled
+- name: dtv_dvb_bbscrambler_bb_0
+  id: dtv_dvb_bbscrambler_bb
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    framesize1: FECFRAME_NORMAL
+    framesize2: FECFRAME_NORMAL
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    rate1: C1_2
+    rate2: C1_3
+    rate3: C1_2
+    rate4: C1_5_MEDIUM
+    rate5: C1_4
+    standard: STANDARD_DVBS2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [640, 28.0]
+    rotation: 0
+    state: enabled
+- name: dtv_dvb_bch_bb_0
+  id: dtv_dvb_bch_bb
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    framesize1: FECFRAME_NORMAL
+    framesize2: FECFRAME_NORMAL
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    rate1: C1_2
+    rate2: C1_3
+    rate3: C1_2
+    rate4: C1_5_MEDIUM
+    rate5: C1_4
+    standard: STANDARD_DVBS2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [864, 28.0]
+    rotation: 0
+    state: enabled
+- name: dtv_dvb_ldpc_bb_0
+  id: dtv_dvb_ldpc_bb
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    constellation: MOD_OTHER
+    framesize1: FECFRAME_NORMAL
+    framesize2: FECFRAME_NORMAL
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    rate1: C1_2
+    rate2: C1_3
+    rate3: C1_2
+    rate4: C1_5_MEDIUM
+    rate5: C1_4
+    standard: STANDARD_DVBS2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1088, 20.0]
+    rotation: 0
+    state: enabled
+- name: dtv_dvbs2_interleaver_bb_0
+  id: dtv_dvbs2_interleaver_bb
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    constellation: MOD_QPSK
+    framesize: FECFRAME_NORMAL
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    rate1: C1_2
+    rate2: C1_5_MEDIUM
+    rate3: C1_4
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [224, 196.0]
+    rotation: 0
+    state: enabled
+- name: dtv_dvbs2_modulator_bc_0
+  id: dtv_dvbs2_modulator_bc
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    constellation: MOD_QPSK
+    framesize: FECFRAME_NORMAL
+    interpolation: INTERPOLATION_OFF
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    rate1: C1_2
+    rate2: C1_5_MEDIUM
+    rate3: C1_4
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [496, 188.0]
+    rotation: 0
+    state: enabled
+- name: dtv_dvbs2_physical_cc_0
+  id: dtv_dvbs2_physical_cc
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    constellation: MOD_QPSK
+    framesize: FECFRAME_NORMAL
+    goldcode: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    pilots: PILOTS_OFF
+    rate1: C1_2
+    rate2: C1_5_MEDIUM
+    rate3: C1_4
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 348.0]
+    rotation: 0
+    state: enabled
+- name: virtual_sink_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: ldpc-int
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1120, 116.0]
+    rotation: 180
+    state: true
+- name: virtual_sink_1
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: mod-phy
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [744, 212.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: ldpc-int
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [224, 148.0]
+    rotation: 180
+    state: true
+- name: virtual_source_1
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: mod-phy
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 300.0]
+    rotation: 180
+    state: true
+
+connections:
+- [blocks_file_source_1, '0', blocks_unpack_k_bits_bb_0, '0']
+- [blocks_unpack_k_bits_bb_0, '0', dtv_dvb_bbscrambler_bb_0, '0']
+- [dtv_dvb_bbscrambler_bb_0, '0', dtv_dvb_bch_bb_0, '0']
+- [dtv_dvb_bch_bb_0, '0', dtv_dvb_ldpc_bb_0, '0']
+- [dtv_dvb_ldpc_bb_0, '0', virtual_sink_0, '0']
+- [dtv_dvbs2_interleaver_bb_0, '0', dtv_dvbs2_modulator_bc_0, '0']
+- [dtv_dvbs2_modulator_bc_0, '0', virtual_sink_1, '0']
+- [dtv_dvbs2_physical_cc_0, '0', blocks_file_sink_1, '0']
+- [virtual_source_0, '0', dtv_dvbs2_interleaver_bb_0, '0']
+- [virtual_source_1, '0', dtv_dvbs2_physical_cc_0, '0']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.6.0

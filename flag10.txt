@@ -1,0 +1,4 @@
+Flag #10 is the transport stream PID in which this text is found,
+formatted in the usual flag{...} format, in lowercase hex.
+
+(Format example: flag{0x012a})

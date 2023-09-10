@@ -1,0 +1,7 @@
+for n in {0..1499}; do ln -s base-frame.png frame-$(printf "%04d" $n).png; done
+
+ln -sf qr-frame.png frame-0937.png
+
+# use subtitleedit to convert .srt to .sub
+
+ffmpeg -y -framerate 25 -pattern_type glob -i 'frame-*.png' -i ../audio/track1.wav -i ../audio/track2.wav -i ../subtitles/track1.sub -i ../subtitles/track2.sub -map 0 -map 1 -map 2 -map 3 -map 4 -c:v hevc -c:a aac -c:s dvb_subtitle -f mpegts -b:v 800k -maxrate 900k -bufsize 2000k -metadata service_provider="Flag #5: flag{tekioh3vah}" -metadata service_name="Flag #6: flag{einae4eebe}" -metadata:s:a:0 language=eng -metadata:s:a:1 language=eng -metadata:s:s:0 language=eng -metadata:s:s:1 language=esp -max_interleave_delta 0 -mpegts_flags initial_discontinuity -muxrate 988858.11 output.ts
